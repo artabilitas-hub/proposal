@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridges Not Walls - Artabilitas</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Konfigurasi Font dan Warna Kustom -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'accentX': '#EF4444', // Merah Aksen
+                        'softBlue': '#e3f2fd', // Biru Muda (Acara & Misi)
+                        'mediumBlue': '#90caf9', // Biru Sedang (Kuratorial)
+                        'darkBlue': '#1f2937', // Biru Tua/Navy (Prospectus)
+                        'successGreen': '#4BB543', // Hijau untuk sukses/pencapaian
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Menggunakan font Inter */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+        /* Custom Gradients untuk Kontras dan Branding */
+        .prospectus-bg {
+            background-color: #1f2937; /* Biru Tua/Navy Solid */
+        }
+        .bg-mediumBlue {
+            background-color: #90caf9;
+        }
+        .bg-softBlue {
+            background-color: #e3f2fd;
+        }
+        .hero-bg {
+            background-color: #ffffff; /* Putih Solid */
+        }
+        /* Style untuk Donut Chart */
+        #budgetChart { 
+            max-width: 400px;
+            margin: auto;
+            min-height: 350px; /* Tambahkan tinggi minimal agar chart terlihat */
+        }
+        /* Gaya Tautan Utama (CTA) */
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .cta-button:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+
+    <!-- Navigasi Bar -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <a href="https://artabilitas.wixsite.com/artabilitas" target="_blank" class="flex items-center space-x-2 font-bold text-lg text-darkBlue hover:text-accentX transition duration-150">
+                <img src="https://artabilitas.netlify.app/logo-artabilitas-4web.jpg" alt="Logo Artabilitas" class="h-8 w-auto">
+                <span>Artabilitas</span>
+            </a>
+            <div class="space-x-4 flex">
+                <a href="#about" class="text-gray-600 hover:text-darkBlue transition duration-150 hidden sm:block">Acara</a>
+                <a href="#goals" class="text-gray-600 hover:text-darkBlue transition duration-150 hidden sm:block">Misi</a>
+                <a href="#portfolio-link" class="text-gray-600 hover:text-darkBlue transition duration-150 hidden sm:block">Portofolio</a>
+                <a href="#curatorial" class="text-gray-600 hover:text-darkBlue transition duration-150 hidden sm:block">Kuratorial</a>
+				<a href="#venue-credibility" class="text-gray-600 hover:text-darkBlue transition duration-150 hidden sm:block">Kredibilitas Galeri</a>
+                <!-- Tombol CTA selalu terlihat -->
+                <a href="#partnership-prospectus" class="px-3 py-1 bg-accentX text-white text-sm font-semibold rounded-full shadow-md hover:bg-red-600 transition duration-150">
+                    Kemitraan
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. Header dan Pengenalan Acara (#about) -->
+    <header id="about" class="hero-bg py-16 md:py-24">
+        <div class="container mx-auto px-4 text-center">
+            <!-- Logo Utama -->
+            <a href="https://artabilitas.wixsite.com/artabilitas" target="_blank" class="block mb-4 hover:opacity-80 transition duration-150">
+                <img src="https://artabilitas.netlify.app/logo-artabilitas-4web.jpg" alt="Logo Artabilitas" class="mx-auto h-20 w-auto">
+            </a>
+
+            <h1 class="text-xl md:text-2xl font-semibold text-gray-600 mb-2">Artabilitas presents:</h1>
+            <h2 class="text-5xl md:text-7xl font-extrabold text-darkBlue leading-tight mb-6">
+                BRIDGES NOT WALLS
+            </h2>
+            <p class="text-lg md:text-2xl text-gray-700 max-w-3xl mx-auto mb-8">
+                Pameran Seni Rupa yang menegaskan bahwa setiap karya, terlepas dari keragaman neurobiologis penciptanya, layak mendapatkan apresiasi setara di kancah seni rupa <strong>mainstream</strong>.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <div class="p-4 bg-white shadow-lg rounded-xl border border-softBlue">
+                    <p class="text-sm font-medium text-gray-500">Waktu</p>
+                    <p class="text-lg font-bold text-darkBlue">Awal Tahun 2026 (14 Hari)</p>
+                </div>
+                <div class="p-4 bg-white shadow-lg rounded-xl border border-softBlue">
+                    <p class="text-sm font-medium text-gray-500">Tempat</p>
+                    <p class="text-lg font-bold text-darkBlue">Jagad Gallery, Wisma Geha, Jakarta</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Misi Tiga Jembatan (#goals) -->
+    <section id="goals" class="bg-softBlue py-16 md:py-20">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-darkBlue text-center mb-12">Misi Tiga Jembatan Artabilitas</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Misi 1 -->
+                <div class="card bg-white p-6 rounded-xl shadow-xl transform hover:scale-[1.02] transition duration-300 border-b-4 border-accentX">
+                    <div class="text-5xl text-accentX mb-4">🎨</div>
+                    <h4 class="text-xl font-semibold text-darkBlue mb-3">Memperkaya Paradigma Apresiasi</h4>
+                    <p class="text-gray-600">Memperluas cara pandang publik seni rupa (kritikus, kolektor, institusi) dengan melihat karya neurodivergen sebagai ekspresi otentik yang memiliki nilai seni setara.</p>
+                </div>
+                <!-- Misi 2 -->
+                <div class="card bg-white p-6 rounded-xl shadow-xl transform hover:scale-[1.02] transition duration-300 border-b-4 border-darkBlue">
+                    <div class="text-5xl text-darkBlue mb-4">🔗</div>
+                    <h4 class="text-xl font-semibold text-darkBlue mb-3">Membuka Jaringan dan Kesempatan</h4>
+                    <p class="text-gray-600">Membangun koneksi permanen dengan galeri, kurator, dan kolektor ternama untuk menciptakan jalur <strong>mainstream</strong> bagi seniman Artabilitas.</p>
+                </div>
+                <!-- Misi 3 -->
+                <div class="card bg-white p-6 rounded-xl shadow-xl transform hover:scale-[1.02] transition duration-300 border-b-4 border-mediumBlue">
+                    <div class="text-5xl text-mediumBlue mb-4">🤝</div>
+                    <h4 class="text-xl font-semibold text-darkBlue mb-3">Fondasi Kemitraan Jangka Panjang</h4>
+                    <p class="text-gray-600">Menarik perhatian calon sponsor strategis yang memiliki nilai-nilai sejalan, menjamin keberlanjutan misi Artabilitas di masa depan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- BARU: Tautan Portofolio Lengkap (#portfolio-link) -->
+    <section id="portfolio-link" class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center max-w-4xl">
+            <h3 class="text-3xl font-bold text-successGreen mb-4">
+                Rekam Jejak & Kredibilitas
+            </h3>
+            <p class="text-xl text-gray-700 mb-6">
+                Pameran <strong>Bridges Not Walls</strong> dibangun di atas fondasi pencapaian yang kuat. Lihat sejarah kami, mulai dari pameran perdana hingga koleksi institusional.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-4 mb-8">
+                <div class="p-3 bg-softBlue rounded-lg font-semibold text-darkBlue border border-mediumBlue">🖼️ Koleksi Museum Seni Rupa Jakarta</div>
+                <div class="p-3 bg-softBlue rounded-lg font-semibold text-darkBlue border border-mediumBlue">🌐 Pameran Virtual 3D Permanen</div>
+                <div class="p-3 bg-softBlue rounded-lg font-semibold text-darkBlue border border-mediumBlue">📰 Liputan Media Nasional</div>
+            </div>
+            
+            <!-- Tautan Eksklusif ke Portofolio Lengkap (Live Site) -->
+            <a href="https://portofolioartabilitas.netlify.app/" target="_blank" class="cta-button inline-block px-10 py-4 bg-accentX text-white font-bold text-lg rounded-full shadow-xl hover:bg-red-600 transition duration-300">
+                KUNJUNGI PORTOFOLIO ARTABILITAS
+            </a>
+            <p class="text-sm text-gray-500 mt-3">*Dokumen pencapaian lengkap tersedia di tautan portofolio.</p>
+
+        </div>
+    </section>
+
+    <!-- 3. Konsep Kuratorial (#curatorial) -->
+    <section id="curatorial" class="bg-mediumBlue py-16 md:py-20">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-darkBlue text-center mb-12">Konsep Kuratorial: Dialog Eksistensi & Proses Inklusif</h3>
+            
+            <!-- Penegasan LOA Kurator -->
+            <div class="max-w-4xl mx-auto mb-10 p-6 bg-white rounded-xl shadow-lg border-l-4 border-accentX">
+                <p class="font-bold text-xl text-darkBlue mb-2">Jaminan Kredibilitas Kuratorial</p>
+                <p class="text-gray-700">Pameran "Bridges Not Walls" dikurasi oleh <strong>Asmudjo Jono Irianto</strong>, seorang tokoh seni rupa yang kredibel. Keterlibatan beliau adalah jaminan kualitas kuratorial setara institusi seni <strong>mainstream</strong>, memastikan karya dianalisis secara mendalam dan berharga bagi kolektor.</p>
+                <!-- Placeholder untuk Kutipan Kurator -->
+                <p class="mt-4 text-sm italic text-gray-500">"Sebetulnya Medan seni rupa kontemporer itu selalu terbuka dan pada dasarnya inclusive. Karena keberagaman seni rupa kontemporer itu adalah pada pluralisme.." ~ Asmudjo Jono Irianto ~</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Lapisan 1: Eksistensi -->
+                <div class="card bg-white p-6 rounded-xl shadow-xl border-t-4 border-accentX">
+                    <h4 class="text-xl font-semibold text-darkBlue mb-3">1. Lapisan Eksistensi (The Uniqueness)</h4>
+                    <p class="text-gray-600">Fokus pada <strong>keunikan visual</strong> dan kekuatan ekspresi yang bersumber langsung dari perbedaan neurobiologis. Melihat karya dari keaslian perspektif, bukan batasan.</p>
+                </div>
+                <!-- Lapisan 2: Proses Kreatif -->
+                <div class="card bg-white p-6 rounded-xl shadow-xl border-t-4 border-darkBlue">
+                    <h4 class="text-xl font-semibold text-darkBlue mb-3">2. Lapisan Proses Kreatif (The Methodology)</h4>
+                    <p class="text-gray-600">Menganalisis bagaimana ciri-ciri neurodivergensi (misal: <strong>hyperfocus</strong>, pengulangan) <strong>menjadi metode yang sah</strong> dalam proses penciptaan karya, mengangkatnya menjadi kerangka kerja artistik.</p>
+                </div>
+                <!-- Lapisan 3: Seni Inklusif -->
+                <div class="card bg-white p-6 rounded-xl shadow-xl border-t-4 border-softBlue">
+                    <h4 class="text-xl font-semibold text-darkBlue mb-3">3. Lapisan Seni Inklusif (The Context)</h4>
+                    <p class="text-gray-600">Menempatkan karya yang telah dianalisis prosesnya ke dalam <strong>konteks sejarah seni rupa mainstream</strong>, menegaskan posisi mereka di panggung seni rupa yang lebih luas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- NEW SECTION: Kredibilitas Lokasi (#venue-credibility) -->
+    <section id="venue-credibility" class="bg-white py-16 md:py-20">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <h3 class="text-3xl font-bold text-darkBlue text-center mb-12">Kredibilitas Lokasi: Jagad Gallery, Wisma Geha</h3>
+          
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Keunggulan 1: Panggung Utama -->
+                <div class="p-6 bg-softBlue rounded-xl shadow-lg border-l-4 border-mediumBlue">
+                    <div class="text-3xl text-darkBlue mb-3">🏛️</div>
+                    <h4 class="text-xl font-semibold text-darkBlue mb-3">Panggung Utama Seni Rupa</h4>
+                    <p class="text-gray-600 text-sm">Jagad Gallery merupakan ruang pameran utama yang kerap digunakan oleh institusi seni rupa dan kurator ternama, menempatkan pameran ini setara dengan acara <strong>mainstream</strong> lainnya.</p>
+                </div>
+                
+                <!-- Keunggulan 2: Lokasi Strategis -->
+                <div class="p-6 bg-softBlue rounded-xl shadow-lg border-l-4 border-accentX">
+                    <div class="text-3xl text-accentX mb-3">📍</div>
+                    <h4 class="text-xl font-semibold text-darkBlue mb-3">Akses Kolektor Premium</h4>
+                    <p class="text-gray-600 text-sm">Berada di kawasan komersial strategis Jakarta Selatan (Wisma Geha), lokasi ini menjamin visibilitas dan akses mudah bagi kolektor, <strong>stakeholder</strong> korporat, dan media terkemuka.</p>
+                </div>
+                
+                <!-- Keunggulan 3: Standar Instalasi -->
+                <div class="p-6 bg-softBlue rounded-xl shadow-lg border-l-4 border-darkBlue">
+                    <div class="text-3xl text-successGreen mb-3">💡</div>
+                    <h4 class="text-xl font-semibold text-darkBlue mb-3">Standar Instalasi Terbaik</h4>
+                    <p class="text-gray-600 text-sm">Fasilitas galeri memenuhi standar internasional untuk instalasi, pencahayaan, dan keamanan karya, memastikan setiap karya neurodivergen disajikan dengan profesionalisme tinggi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+    <!-- 4. Digital Prospectus (#partnership-prospectus) - Biru Tua -->
+    <section id="partnership-prospectus" class="prospectus-bg py-16 md:py-24 text-white">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-4">Digital Prospectus: Kemitraan Strategis</h3>
+            <p class="text-gray-400 text-center max-w-2xl mx-auto mb-12">Tawaran ini menekankan pada profesionalisme, kredibilitas Kuratorial, dan dampak program yang berkelanjutan.</p>
+
+            <!-- Donut Chart Alokasi Dana -->
+            <div class="flex flex-col lg:flex-row items-center lg:space-x-12 mb-16">
+                <div class="w-full lg:w-1/2 p-4">
+                    <!-- Canvas untuk Chart -->
+                    <canvas id="budgetChart" class="w-full h-auto">
+                        <!-- Chart akan di-render di sini -->
+                    </canvas>
+                </div>
+                <div class="w-full lg:w-1/2 mt-8 lg:mt-0 space-y-4">
+                    <h4 class="text-2xl font-semibold text-white mb-4">Alokasi Anggaran & Fokus Dukungan</h4>
+                    <div class="flex items-start space-x-3">
+                        <span class="inline-block w-4 h-4 mt-1 rounded-full bg-cyan-400 flex-shrink-0"></span>
+                        <div>
+                            <p class="font-bold text-lg">68% - Profesionalisme Kuratorial (Patron Utama)</p>
+                            <p class="text-gray-400 text-sm">Menutup 100% Honorarium Kurator, Tim, Pembicara, dan Sewa Galeri.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="inline-block w-4 h-4 mt-1 rounded-full bg-amber-400 flex-shrink-0"></span>
+                        <div>
+                            <p class="font-bold text-lg">21% - Operasional & Logistik (Platinum)</p>
+                            <p class="text-gray-400 text-sm">Menutup Biaya Logistik Karya, Transport Seniman Undangan, dan Instalasi.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="inline-block w-4 h-4 mt-1 rounded-full bg-lime-400 flex-shrink-0"></span>
+                        <div>
+                            <p class="font-bold text-lg">6% - Publikasi & Dokumentasi (Gold)</p>
+                            <p class="text-gray-400 text-sm">Menutup Biaya Publikasi Maksimal dan Dokumentasi Profesional.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="inline-block w-4 h-4 mt-1 rounded-full bg-pink-400 flex-shrink-0"></span>
+                        <div>
+                            <p class="font-bold text-lg">5% - Acara Pembukaan (Silver)</p>
+                            <p class="text-gray-400 text-sm">Menutup Biaya Acara Pembukaan dan Konsumsi Diskusi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tier Kemitraan (Harga Disensor/Dirahasiakan) -->
+            <div class="text-center mb-10">
+                <h4 class="text-2xl font-semibold text-white">Tier Kemitraan & Benefit Eksklusif</h4>
+                <p class="text-gray-400">Harga dan detail penuh hanya tersedia via negosiasi langsung.</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6">
+                <!-- Tier 1: Patron Utama -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-2xl border-t-4 border-accentX transform hover:scale-[1.05] transition duration-300">
+                    <h5 class="text-xl font-bold text-accentX mb-2">PATRON UTAMA</h5>
+                    <p class="text-xl font-extrabold text-white mb-4">
+                        <a href="#" class="whatsapp-link text-white hover:text-accentX transition duration-150">PREMIUM</a>
+                    </p>
+                    <ul class="text-gray-300 space-y-2 text-sm">
+                        <li>[Title Sponsor] Pameran</li>
+                        <li><strong>Keynote Speech</strong> Pembukaan/Penutupan</li>
+                        <li>Liputan Media <strong>Fokus</strong> (FMCG Focus)</li>
+                        <li>Visibilitas Merek Maksimal</li>
+                    </ul>
+                </div>
+
+                <!-- Tier 2: Platinum -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-2xl border-t-4 border-amber-400 transform hover:scale-[1.05] transition duration-300">
+                    <h5 class="text-xl font-bold text-amber-400 mb-2">PLATINUM</h5>
+                    <p class="text-xl font-extrabold text-white mb-4">
+                        <a href="#" class="whatsapp-link text-white hover:text-amber-400 transition duration-150">EKSKLUSIF</a>
+                    </p>
+                    <ul class="text-gray-300 space-y-2 text-sm">
+                        <li>Mitra Strategis Logistik</li>
+                        <li>Ruang Aktivasi Merek Eksklusif</li>
+                        <li>Sambutan di Pembukaan</li>
+                        <li>Liputan Pers Khusus</li>
+                    </ul>
+                </div>
+
+                <!-- Tier 3: Gold -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-2xl border-t-4 border-lime-400 transform hover:scale-[1.05] transition duration-300">
+                    <h5 class="text-xl font-bold text-lime-400 mb-2">GOLD</h5>
+                    <p class="text-xl font-extrabold text-white mb-4">
+                        <a href="#" class="whatsapp-link text-white hover:text-lime-400 transition duration-150">EKSKLUSIF</a>
+                    </p>
+                    <ul class="text-gray-300 space-y-2 text-sm">
+                        <li>Mitra Pendukung Publikasi</li>
+                        <li>Logo Utama di Semua Materi</li>
+                        <li>Penyebutan Resmi Selama Acara</li>
+                        <li>Undangan VIP Eksklusif</li>
+                    </ul>
+                </div>
+
+                <!-- Tier 4: Silver -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-2xl border-t-4 border-pink-400 transform hover:scale-[1.05] transition duration-300">
+                    <h5 class="text-xl font-bold text-pink-400 mb-2">SILVER</h5>
+                    <p class="text-xl font-extrabold text-white mb-4">
+                        <a href="#" class="whatsapp-link text-white hover:text-pink-400 transition duration-150">EKSKLUSIF</a>
+                    </p>
+                    <ul class="text-gray-300 space-y-2 text-sm">
+                        <li>Mitra Pendukung Acara Pembukaan</li>
+                        <li>Visibilitas di Platform Digital</li>
+                        <li>Penyebutan Singkat Acara</li>
+                        <li>Dukungan Konsumsi Diskusi</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="whatsapp-link text-lg font-semibold px-6 py-3 bg-accentX text-white rounded-full shadow-lg hover:bg-red-600 transition duration-150 transform hover:scale-105">
+                    Detail Proposal Lengkap (via WA)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-2">&copy; 2025 Artabilitas. All rights reserved.</p>
+            <p class="text-sm text-gray-400 mb-4">Pameran "Bridges Not Walls" | Jagad Gallery, Wisma Geha, Jakarta.</p>
+            <a href="https://artabilitas.wixsite.com/artabilitas" target="_blank" class="text-mediumBlue hover:text-accentX transition duration-150 text-sm">Kunjungi Website Resmi Artabilitas</a>
+        </div>
+    </footer>
+
+    <!-- Script Chart.js untuk Donut Chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script>
+        // Data untuk Donut Chart
+        const data = {
+            labels: [
+                'Profesionalisme Kuratorial (Patron Utama)',
+                'Operasional & Logistik (Platinum)',
+                'Publikasi & Dokumentasi (Gold)',
+                'Acara Pembukaan (Silver)',
+            ],
+            datasets: [{
+                label: 'Total Anggaran Pameran: Rp 168.900.000',
+                data: [120000000, 35000000, 10000000, 4000000], // Nilai-nilai dana
+                backgroundColor: [
+                    '#00bcd4', // Cyan untuk Patron Utama (Kontras dengan Dark Blue BG)
+                    '#ffc107', // Amber
+                    '#8bc34a', // Lime Green
+                    '#e91e63'  // Pink
+                ],
+                hoverOffset: 10,
+                borderWidth: 2,
+                borderColor: '#1f2937' // Border warna Dark Blue agar menyatu dengan background
+            }]
+        };
+
+        // Konfigurasi Chart
+        const config = {
+            type: 'doughnut',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false, // Sembunyikan legenda karena sudah dijelaskan di samping
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed) {
+                                    // Format data menjadi Rupiah
+                                    label += new Intl.NumberFormat('id-ID', {
+                                        style: 'currency',
+                                        currency: 'IDR',
+                                        minimumFractionDigits: 0,
+                                        maximumFractionDigits: 0
+                                    }).format(context.parsed);
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            },
+        };
+
+        // Render Chart
+        window.onload = function() {
+            const ctx = document.getElementById('budgetChart'); 
+            if (ctx) {
+                new Chart(ctx, config);
+            }
+        };
+
+        // Script untuk Tautan WhatsApp
+        document.addEventListener('DOMContentLoaded', () => {
+            const waLinks = document.querySelectorAll('.whatsapp-link');
+            const waNumber = '6289625692669'; // GANTI DENGAN NOMOR WA ANDA: Contoh 6281234567890
+            const waMessage = encodeURIComponent("Halo Artabilitas, saya tertarik untuk meminta Detail Proposal Lengkap Pameran 'Bridges Not Walls'. Mohon kirimkan link Google Drive Proposalnya. Terima kasih.");
+
+            waLinks.forEach(link => {
+                link.href = `https://wa.me/${waNumber}?text=${waMessage}`;
+                link.target = '_blank'; // Membuka di tab baru
+            });
+        });
+    </script>
+</body>
+</html>
